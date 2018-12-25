@@ -9,7 +9,7 @@ module.exports = {
       options: {
         repositoryName: "uidesignbox",
         // The token will be listed under "Permanent access tokens".
-
+        accessToken: "MC5YQld5d1JVQUFDb0FWd1Ux.I--_ve-_ve-_vTnvv71HBj3vv70TS1Hvv73vv70I77-9annvv73vv70TGDHvv71H77-977-977-9f1NZ",
 
         linkResolver: ({ node, key, value }) => doc => {
           // Your link resolver

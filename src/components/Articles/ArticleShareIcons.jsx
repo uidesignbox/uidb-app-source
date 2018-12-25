@@ -1,7 +1,8 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import PropTypes from 'prop-types';
 
-const ArticleShareIcons = (props) => {
+const ArticleShareIcons = ({ article, path, copyLink }) => {
    const { info, path } = props;
    const excerpt = info.excerpt.replace(/<\/?[^>]+(>|$)/g, "");
    return (
@@ -20,6 +21,12 @@ const ArticleShareIcons = (props) => {
          </a>
       </ul>
    )
-}
+};
+
+ArticleShareIcons.propTypes = {
+  article: PropTypes.object,
+  path: PropTypes.string,
+  copyLink: PropTypes.func,
+};
 
 export default ArticleShareIcons;

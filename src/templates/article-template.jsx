@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
-import PropTypes from 'prop-types';
 
 // Layouts
 import GlobalLayout from '../components/Layout/GlobalLayout';
@@ -10,13 +9,10 @@ import OneThirdCol from '../components/Layout/OneThirdCol';
 import TwoThirdsCol from '../components/Layout/TwoThirdsCol';
 
 import ArticleHeader from '../components/Articles/ArticleHeader';
+import ArticleBody from '../components/Articles/ArticleBody';
 import ArticleFooter from '../components/Articles/ArticleFooter';
-import ArticleContributor from '../components/Articles/ArticleContributor';
-import ArticleTags from '../components/Articles/ArticleTags';
-import ArticleShareIcons from '../components/Articles/ArticleShareIcons';
-// import ArticleShareButton from '../components/Articles/ArticleShareButton';
+import ArticleFooterShare from '../components/Articles/ArticleFooterShare';
 import ModalOverlay from '../components/commons/ModalOverlay';
-import CopyMessage from '../components/Articles/CopyMessage';
 import SubscribeFooterSection from '../components/Contact/SubscribeFooterSection';
 import SubscribeModal from '../components/Articles/SubscribeModal';
 
@@ -33,13 +29,13 @@ class ArticlePost extends PureComponent {
     this.openSubscribe = this.openSubscribe.bind(this);
     this.handleCopyLink = this.handleCopyLink.bind(this);
     this.handleCopyMessage = this.handleCopyMessage.bind(this);
-  }
+  };
 
   handleCopyMessage() {
     this.setState(prevState =>
       ({ copiedLink: !prevState.copiedLink })
     );
-  }
+  };
 
   handleCopyLink(e) {
     // Create dummy input element to select and copy url to clipboard, then remove.
@@ -51,7 +47,7 @@ class ArticlePost extends PureComponent {
     document.execCommand('copy');
     document.body.removeChild(temporary);
     this.handleCopyMessage();
-  }
+  };
 
   openSubscribe() {
     this.setState(prevState => ({
@@ -60,7 +56,6 @@ class ArticlePost extends PureComponent {
   };
 
   render() {
-    // TODO: prop types and title meta
     return (
       <GlobalLayout>
         <Helmet
@@ -74,21 +69,17 @@ class ArticlePost extends PureComponent {
           <TwoThirdsCol>
             <article className="article__container">
               <ArticleHeader info={post} />
-              <div className="article__body-content" dangerouslySetInnerHTML={{ __html: post.content }}></div>
+              <ArticleBody content={post.content} />
             </article>
           </TwoThirdsCol>
           <OneThirdCol>
             <ArticleFooter article={ post } />
-              <section className="article-footer__share" onBlur={this.handleCopyMessage}>
-                <div className="section">
-                  <h4>Share Article</h4>
-                  {this.state.copiedLink ? <CopyMessage /> : null}
-                  <ArticleShareIcons
-                    info={post}
-                    copyLink={this.handleCopyLink} path={this.props.location.href} />
-                  {/* <ArticleShareButton openModal={this.openSubscribe} /> */}
-                </div>
-              </section>
+            <ArticleFooterShare
+              article={post}
+              handleCopyLink={this.handleCopyLink}
+              copiedLink={this.copiedLink}
+              path={this.props.location.href}
+            />
           </OneThirdCol>
         </MainContainer>
 
@@ -96,7 +87,8 @@ class ArticlePost extends PureComponent {
         {this.state.isSubscribeOpen &&
           <ModalOverlay>
             <SubscribeModal toggle={this.openSubscribe} />
-          </ModalOverlay>}
+          </ModalOverlay>
+        }
       </GlobalLayout>
     )
   }

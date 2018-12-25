@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import OneThirdCol from '../components/Layout/OneThirdCol';
 import SubscribeFooterSection from '../components/Contact/SubscribeFooterSection';
 
-import IndexPosts from '../components/Index/IndexPosts';
+import IndexPost from '../components/Index/IndexPost';
 import FeaturedArticle from '../components/Index/FeaturedArticle';
 import FeaturedArticleImage from '../components/Index/FeaturedImage';
 import SocialIcons from '../components/commons/SocialIcons';
@@ -55,8 +55,8 @@ const IndexTemplate = ({ pathContext }) => {
           />
         </div>
         <div className="index__article-container">
-          {group.slice(1).map((item, index) => <IndexPosts key={index} info={item.node} />)
-          }
+          {group.slice(1).map((item, i) =>
+            <IndexPost key={i} post={item.node} />)}
         </div>
 
         {/* Pagination container */}
