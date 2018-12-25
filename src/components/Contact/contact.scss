@@ -1,0 +1,147 @@
+@import '../../sass/typography.scss';
+
+.contact__landing {
+   padding: 2rem;
+   color: #000;
+   p {
+      font-family: $font-stack-serif-secondary;
+      font-size: 18px;
+      line-height: 155%;
+   }
+}
+
+.contact-us__form {
+   margin-top: 50px;
+   .form-section {
+      margin-bottom: 30px;
+   }
+   input {
+      width: 100%;
+      padding: 8px 10px;
+      border: 2px solid #ddd;
+   }
+   label {
+      display: inline-block;
+      margin-bottom: 15px;
+      font-size: 18px;
+      font-family: $font-stack-serif-secondary;
+      color: #000;
+   }
+   textarea {
+      width: 100%;
+      padding: 15px 20px 10px;
+      border: 2px solid #ddd;
+   }
+   option {
+      width: 100%;
+   }
+   .submit--btn {
+      outline: none;
+      font-weight: bold;
+      font-size: 15px;
+      background: transparent;
+      border: 1px solid #ddd;
+      padding: 15px 45px;
+      cursor: pointer;
+      &:hover {
+         background: #eee;
+      }
+   }
+}
+
+.form-group {
+   margin-bottom: 30px;
+}
+
+#contactTopics {
+   display: block;
+   width: 100%;
+   padding: 15px;
+   border: 2px solid #ddd;
+   background: transparent;
+   border-radius: 0;
+   -webkit-appearance: none;
+}
+
+// Subscribe Footer
+.subscribe-footer__container {
+   width: 100%;
+   padding: 3rem 15px;
+   clear: both;
+   background: #efefef;
+}
+
+.subscribe-footer__head {
+   margin-bottom: 35px;
+   text-align: center;
+   font-family: $font-stack-serif-secondary;
+   h2 {
+      margin-bottom: 15px;
+      color: $primary-blue;
+   }
+   small {
+      font-style: italic;
+      font-size: 14px;
+      color: #333;
+   }
+}
+
+.subscribe-footer__form {
+   display: flex;
+   flex-direction: row;
+   margin: 0 auto;
+   max-width: 400px;
+   background: #fff;
+   align-items: center;
+   input {
+      flex: 3;
+      padding: 17px 0 17px 18px;
+      background: transparent;
+      border: none;
+      border-radius: none;
+      outline: none;
+      -webkit-appearance: none;
+   }
+   .submit__btn {
+      flex: 2;
+      background: transparent;
+      outline: none;
+      border: none;
+      border-left: 1px solid #ccc;
+      border-radius: 0;
+      font-size: 14px;
+      font-weight: bold;
+      color: $primary-red;
+      cursor: pointer;
+   }
+}
+
+.subscribe__thank-you {
+   max-width: 300px;
+   margin: 25px auto 0;
+   font-size: 14px;
+   font-weight: bold;
+   font-style: italic;
+   text-align: center;
+   color: $primary-blue;
+}
+
+// END subscribe Footer
+
+@media screen and (min-width: 767px) {
+   .contact__landing {
+      padding: 25px 4rem;
+   }
+   .contact-footer__container {
+      padding: 4.5rem 3rem;
+   }
+   .form-section.flex__item {
+      display: flex;
+   }
+   .form-group {
+      justify-content: space-around;
+      margin-bottom: 0;
+      width: 100%;
+      padding-right: 15px;
+   }
+}

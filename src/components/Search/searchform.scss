@@ -1,0 +1,148 @@
+@import "../../sass/typography";
+@import "../../sass/mixins-main";
+
+// Navigation Search
+.search-form__container {
+    position: absolute;
+    top: 78px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    padding: 20px 15px;
+    z-index: 200;
+    background: #eee;
+    border-bottom: 1px solid #ddd;
+    .search__item {
+        display: flex;
+        padding: 10px 5px;
+        border-bottom: 1px solid palevioletred;
+        &:last-child {
+            border: none;
+        }
+    }
+    .search__item--body {
+        font-size: 17px;
+        a {
+            color: $primary-blue;
+        }
+    }
+}
+
+.hidden-label {
+    display: none;
+}
+
+.search-form__header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0;
+    input {
+        width: 100%;
+        font-size: 17px;
+        font-weight: bold;
+        padding: 8px 0 8px 10px;
+        outline: none;
+        color: #000;
+        border: 1px solid #ccc;
+        border-radius: 0;
+        -webkit-appearance: none;
+    }
+}
+
+.search-form__btn {
+   padding: 5px 15px;
+   @include reset-button;
+   color: #fff;
+   background-color: $primary-red;
+   cursor: pointer;
+}
+
+// Search Landing
+.search__item {
+   border-bottom: 1px solid #ddd;
+   &:last-child {
+      border: none;
+   }
+}
+.search-inner__landing {
+   margin-bottom: 15px;
+   font-family: $font-stack-sans;
+   font-size: 20px;
+   color: $primary-blue;
+}
+.search-form__landing {
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+    border-bottom: 1px solid #999;
+    input {
+      width: 100%;
+      font-size: 18px;
+      padding: 10px 35px 10px 10px;
+      outline: none;
+      background: transparent;
+      border: none;
+    }
+   button {
+      position: absolute;
+      top: 0;
+      right: 5px;
+      bottom: 0;
+      background: transparent;
+      border: none;
+      font-size: 22px;
+      color: $primary-red;
+   }
+}
+
+.loading__html {
+    max-width: 500px;
+    margin: 2rem 1rem;
+    padding: 3rem 1rem;
+    background: #eee;
+    border-radius: 5px;
+    div {
+        width: 90%;
+        height: 25px;
+        background: #bbb;
+        margin-bottom: 15px;
+    }
+    p {
+        margin-bottom: 25px;
+        background: #bbb;
+        width: 50%;
+        height: 20px;
+    }
+}
+
+
+.animated-background {
+   animation-duration: 1.5s;
+   animation-fill-mode: forwards;
+   animation-iteration-count: infinite;
+   animation-timing-function: linear;
+   animation-name: placeHolderShimmer;
+   background: #f6f7f8;
+   background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+   background-size: 800px 104px;
+   position: relative;
+ }
+
+@keyframes placeHolderShimmer {
+   0% { background-position: -468px 0; }
+   100% { background-position: 468px 0; }
+}
+
+@media screen and (min-width: 767px) {
+    .search-form__header {
+        margin: 0 auto;
+        max-width: 70%;
+    }
+    .page-header__container.search__header {
+        padding-left: 4rem;
+        border-bottom: 1px solid #ccc;
+    }
+    .loading__html {
+       width: 100%;
+    }
+}

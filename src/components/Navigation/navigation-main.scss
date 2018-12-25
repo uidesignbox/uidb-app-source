@@ -1,0 +1,92 @@
+@import "../../sass/typography";
+
+.header__nav {
+    display: none;
+    min-width: 50%;
+}
+
+.header__nav-list {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   margin: 0;
+   a {
+      font-size: 16px;
+      font-weight: bold;
+      padding-bottom: 7px;
+      text-transform: capitalize;
+      color: #000;
+      &.active {
+         color: $primary-blue;
+         border-bottom: 2px solid #ccc;
+      }
+   }
+   li {
+      position: relative;
+   }
+   .icon {
+      font-size: 20px;
+      margin-left: 10px;
+      color: $primary-blue;
+      vertical-align: text-bottom;
+      cursor: pointer;
+      &.active {
+          color: hotpink;
+          transform: rotate(180deg);
+      }
+   }
+   .sub__menu {
+      position: absolute;
+      top: 2rem;
+      margin: 0;
+      z-index: 100;
+      border-top: 2px solid #777;
+      background: #fff;
+      box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.75);
+   }
+   .sub__menu--item {
+      width: 100%;
+      border-bottom: 1px solid #ddd;
+      a {
+         display: block;
+         padding: 15px;
+      }
+      &:hover {
+         background: #eee;
+         a {
+            color: $primary-red;
+         }
+      }
+      &:last-child {
+         border: none;
+      }
+   }
+}
+
+.header__search--icon {
+    font-size: 15px;
+    padding: 8px;
+    color: $primary-blue;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 767px) {
+    .header__nav {
+        display: block;
+    }
+    .header__nav-list {
+        justify-content: space-evenly;
+        white-space: nowrap;
+        li {
+            margin-right: 25px;
+            &:last-child {
+                margin-right: 0;
+            }
+            a {
+                &:hover {
+                    color: #777;
+                }
+            }
+        }
+    }
+}

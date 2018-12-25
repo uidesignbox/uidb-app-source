@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600');
+@import "../../sass/typography.scss";
+@import "../../sass/mixins-main.scss";
+
+.header-nav__container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	margin: 0 auto;
+	padding: 15px 8px 15px 20px;
+	border-bottom: 1px solid #eee;
+	box-shadow: 0 2px 5px rgba(0,0,0,.2);
+	background-color: #fff;
+}
+
+ .header-btn__toggle--menu {
+	font-size: 20px;
+	color: #555;
+	padding: 0;
+	border: none;
+	background: none;
+	outline: none;
+	cursor: pointer;
+ }
+
+ .header__logo {
+	margin: 0 auto;
+	max-width: 175px;
+	line-height: 0;
+ }
+
+/*  HEADER MENU  */
+.header-mobile__menu {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	height: 100%;
+	width: 75%;
+	padding-top: 5rem;
+	max-width: 300px;
+	z-index: 200;
+	background: #fdfdfd;
+}
+
+.header-mobile--wrapper {
+	position: relative;
+	height: 100%;
+}
+
+.header-mobile__close {
+	position: absolute;
+	top: 15px;
+	right: 10px;
+	font-size: 24px;
+	@include reset-button;
+}
+
+.mobile-menu__item {
+	position: relative;
+	margin-bottom: 15px;
+	list-style-type: none;
+	&:last-child {
+		margin-bottom: 0;
+	}
+	&.active {
+		color: #d8544f;
+	}
+	a {
+		font-size: 20px;
+		font-weight: bold;
+		color: $primary-blue;
+		&:hover {
+			color: #728aa2;
+		}
+	}
+	svg, i {
+		position: absolute;
+		top: 0;
+		right: 0;
+		margin: 0 15px;
+		font-size: 24px;
+	}
+	.icon {
+		&.active {
+			transform: rotate(180deg);
+			color: hotpink;
+		}
+	}
+	.top-link {
+		display: block;
+		padding: 0 15px 12px;
+		max-width: 90%;
+	}
+}
+
+.header-mobile__submenu {
+	// display: none;
+	margin: 0;
+	background: #f4f4f4;
+	&.active {
+		display: block;
+	}
+	li {
+		padding: 15px 25px;
+		border-bottom: 1px solid #eee;
+		&:last-child {
+			margin-bottom: 0;
+			border: none;
+		}
+	}
+	a {
+		font-size: 18px;
+		font-weight: lighter;
+		line-height: 20px;
+	}
+}
+
+.mobile-menu__secondary {
+	position: absolute;
+	margin: 0;
+	bottom: 15px;
+	left: 15px;
+	li {
+		margin-bottom: 10px;
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+	a {
+		color: #000;
+		font-size: 16px;
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+}
+
+
+@media screen and (min-width: 767px) {
+	.header-nav__container {
+		justify-content: space-evenly;
+		padding: 17px 4rem;
+	}
+	.header__logo {
+		margin: 0;
+		padding-right: 15px;
+		margin-right: auto;
+		border-right: 1px solid #ddd;
+	}
+	.header-mobile--wrapper {
+		margin: 0 2rem;
+		width: 40%;
+		max-width: 400px;
+	}
+	.header-btn__toggle--menu {
+		display: none;
+	}
+}

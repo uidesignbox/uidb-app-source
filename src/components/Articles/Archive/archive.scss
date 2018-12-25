@@ -1,0 +1,60 @@
+@import "../../../sass/typography";
+
+.archive__header {
+   padding: 45px 15px;
+   background: #eee;
+   h1 {
+      margin-bottom: 10px;
+      font-family: $font-stack-serif;
+   }
+   p {
+      margin: 0;
+      font-size: 14px;
+      color: $primary-red;
+   }
+}
+
+.archive__articles {
+   padding: 15px 0;
+}
+
+.archive__item {
+   display: flex;
+   padding: 25px 15px;
+   border-bottom: 1px solid #ccc;
+   &:last-child {
+      border-bottom: none;
+   }
+}
+
+.archive__item--image {
+   .img-outer__wrapper {
+      max-width: 300px;
+   }
+}
+
+.archive__item-details {
+   margin-left: 15px;
+}
+
+.archive__item-title {
+   font-family: $font-stack-serif;
+   font-size: 20px;
+   margin-bottom: 10px;
+   a {
+      color: $primary-blue;
+   }
+}
+
+.archive__item-author {
+   margin-bottom: 10px;
+   font-size: 15px;
+   font-weight: normal;
+   color: $primary-red;
+   text-transform: capitalize;
+}
+
+.archive__item-date {
+   font-size: 14px;
+   color: $secondary-light-blue;
+}

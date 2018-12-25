@@ -1,0 +1,39 @@
+.col-two-thirds {
+   display: block;
+   margin: 0 auto;
+   width: 100%;
+}
+
+.col-one-third {
+   display: block;
+   margin: 0 auto;
+   width: 100%;
+}
+
+.main__wrapper {
+   max-width: 1100px;
+   margin: 0 auto;
+}
+
+@media screen and (min-width: 1056px) {
+   .col-two-thirds {
+      float: left;
+      display: inline-flex;
+      width: 70%;
+   }
+
+   .col-one-third {
+      float: left;
+      display: inline-flex;
+      width: 30%;
+      &.extend {
+         width: 100%;
+      }
+   }
+}
+
+@media screen and (min-width: 1056px) {
+   .col-one-third.extend {
+      width: 30%;
+   }
+}
