@@ -16,11 +16,6 @@ import PaginateLink from '../components/Pagination/PaginateLink';
 
 import '../components/Index/index.scss';
 
-
-const FollowMsg = () => (
-  <h4>Follow UiDesignBox</h4>
-);
-
 const IndexTemplate = ({ pathContext }) => {
   const { group, index, pageCount, additionalContext } = pathContext;
   const previousUrl = index - 1 === 1 ? '' : (index - 1).toString();
@@ -79,7 +74,7 @@ const IndexTemplate = ({ pathContext }) => {
 
       <OneThirdCol>
         <div className="index__social-icons">
-          <FollowMsg />
+          <h4>Follow UiDesignBox</h4>
           <SocialIcons />
         </div>
       </OneThirdCol>

@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import HeaderMenu from './HeaderMenu';
-import PrimaryNav from '../Navigation/PrimaryNav';
+import HamburgerMenu from './HamburgerMenu';
+import Navigation from '../Navigation/Navigation';
 import ModalOverlay from '../commons/ModalOverlay';
 import SearchForm from '../Search/SearchForm';
 import Helmet from 'react-helmet';
@@ -69,14 +69,14 @@ class Header extends PureComponent {
           <FontAwesomeIcon icon="bars" />
         </button>
 
-        {this.state.isMenuOpen ?
-          <HeaderMenu toggle={this.toggleMenu} /> : null}
+        {this.state.isMenuOpen &&
+          <HamburgerMenu toggle={this.toggleMenu} />}
 
         <div className="header__logo">
           <Logo siteTitle={this.props.siteTitle} />
         </div>
 
-        <PrimaryNav />
+        <Navigation />
 
         <div className="header__search--icon" onClick={this.toggleSearch}>
           <FontAwesomeIcon icon="search" size="lg" />

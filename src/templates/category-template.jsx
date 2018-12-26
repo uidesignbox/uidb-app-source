@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
+
 import GlobalLayout from '../components/Layout/GlobalLayout';
 import MainContainer from '../components/Layout/MainContainer';
 import OneThirdCol from '../components/Layout/OneThirdCol';
@@ -11,40 +12,38 @@ import PageArticle from '../components/Pages/PageArticle';
 import '../components/Pages/categories.scss';
 import '../components/Pages/page.scss';
 
-class CategoryTemplate extends Component {
-   render() {
-		const categoryInfo = this.props.data.allWordpressPost;
-      const pageInfo = this.props.data.wordpressCategory;
-      const metaTitle = this.props.data.wordpressCategory.description || `Find and learn from articles about ${pageInfo.name}`;
-		return(
-			<GlobalLayout>
-				<Helmet
-					title={ `${pageInfo.name} | ${this.props.pageContext.site.siteMetadata.title}` }
-					meta={[
-						{ name: "description", content: `${metaTitle}` }
-					]}
-				/>
-				<section className="page-header__container">
-					<p className="subtitle">Discover all articles for</p>
-					<h1>{pageInfo.name}</h1>
-				</section>
-				<MainContainer>
-               <TwoThirdsCol>
-                  <section className="page__article-wrapper">
-							{categoryInfo && categoryInfo.edges.map((item, index) => (
-								<PageArticle key={index} info={item.node} />
-							)) }
-                  </section>
-               </TwoThirdsCol>
-               <OneThirdCol>
-					<div className="index__social-icons">
-						<SocialIcons />
-					</div>
-               </OneThirdCol>
-            </MainContainer>
-			</GlobalLayout>
-		)
-	}
+class CategoryTemplate extends PureComponent {
+  render() {
+    // TODO: meta content
+    return (
+      <GlobalLayout>
+        <Helmet
+          title={`${pageInfo.name} | ${this.props.pageContext.site.siteMetadata.title}`}
+          meta={[
+            { name: "description", content: `${metaTitle}` }
+          ]}
+        />
+        <section className="page-header__container">
+          <p className="subtitle">Discover all articles for</p>
+          <h1>{pageInfo.name}</h1>
+        </section>
+        <MainContainer>
+          <TwoThirdsCol>
+            <section className="page__article-wrapper">
+              {categoryInfo && categoryInfo.edges.map((item, index) => (
+                <PageArticle key={index} info={item.node} />
+              ))}
+            </section>
+          </TwoThirdsCol>
+          <OneThirdCol>
+            <div className="index__social-icons">
+              <SocialIcons />
+            </div>
+          </OneThirdCol>
+        </MainContainer>
+      </GlobalLayout>
+    )
+  }
 };
 
 export const categoryQuery = graphql`
