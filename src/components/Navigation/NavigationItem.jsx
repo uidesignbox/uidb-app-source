@@ -13,7 +13,7 @@ const NavigationItem = ({ slug, subItems, title, toggleMenu }) => (
         <FontAwesomeIcon
           icon="caret-down"
           className={`icon active`}
-          onClick={() => toggleMenu(i)} />
+          onClick={() => toggleMenu} />
       </Fragment>
     }
   </li>

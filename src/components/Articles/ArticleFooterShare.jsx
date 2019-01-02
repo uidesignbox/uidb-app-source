@@ -4,7 +4,7 @@ import CopyMessage from '../Articles/CopyMessage';
 import ArticleShareIcons from '../Articles/ArticleShareIcons';
 
 const ArticleFooterShare = ({ handleCopyLink, copiedLink, path, article }) => (
-  <section className="article-footer__share" onBlur={handleCopyMessage}>
+  <section className="article-footer__share" onBlur={''}>
     <div className="section">
       <h4>Share Article</h4>
       {copiedLink ? <CopyMessage /> : null}

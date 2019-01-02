@@ -17,7 +17,7 @@ class SearchForm extends PureComponent {
           <label htmlFor="q" name="search" type="hidden" className="hidden-label">Search website</label>
           <Input
             type={'search'}
-            onSubmit={handleSubmit}
+            onSubmit={''}
             autoComplete={'off'}
             name={'q'}
             htmlFor={'q'}

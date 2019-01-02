@@ -10,14 +10,7 @@ import TwoThirdsCol from '../components/Layout/TwoThirdsCol';
 const PrivacyPolicy = () => {
    return(
       <StaticQuery
-         query={graphql`
-            {
-               wordpressPage(title: {regex: "/Privacy Policy/"}) {
-                  content
-                  title
-               }
-            }
-         `}
+         
          render={data => (
             <GlobalLayout>
                <Helmet

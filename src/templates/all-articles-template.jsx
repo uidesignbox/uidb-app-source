@@ -44,73 +44,9 @@ class AllArticlesArchive extends React.Component {
   }
 };
 
-// export default AllArticlesArchive;
-
 export default props => (
   <StaticQuery
-    query={graphql`
-        query allArticles {
-            allWordpressPost {
-                edges {
-                   node {
-                      author {
-                         name
-                      }
-                      id
-                      title
-                      excerpt
-                      slug
-                      date(formatString: "MMMM DD, YYYY")
-                      featured_media {
-                         alt_text
-                         localFile {
-                            childImageSharp {
-                            fixed {
-                               width
-                               height
-                               src
-                               srcSet
-                            }
-                            }
-                         }
-                      }
-                   }
-                }
-            }
-        }
-    `}
+    
     render={data => <AllArticlesArchive data={data} {...props} />}
   />
-)
-
-// export const allArticlesQuery = graphql`
-//     query allArticles {
-//         allWordpressPost {
-//             edges {
-//                node {
-//                   author {
-//                      name
-//                   }
-//                   id
-//                   title
-//                   excerpt
-//                   slug
-//                   date(formatString: "MMMM DD, YYYY")
-//                   featured_media {
-//                      alt_text
-//                      localFile {
-//                         childImageSharp {
-//                         fixed {
-//                            width
-//                            height
-//                            src
-//                            srcSet
-//                         }
-//                         }
-//                      }
-//                   }
-//                }
-//             }
-//         }
-//     }
-// `
+);

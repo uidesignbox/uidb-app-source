@@ -56,26 +56,28 @@ class ArticlePost extends PureComponent {
   };
 
   render() {
+    console.log('PROPS ARTICLE: \n', this.props);
+
     return (
       <GlobalLayout>
         <Helmet
           title={`Title | UiDesignBox`}
           meta={[
-            { name: "description", content: `${post.acf.meta_description}` },
-            { name: "keywords", content: `${post.acf.meta_keywords}` }
+            // { name: "description", content: `${post.acf.meta_description}` },
+            // { name: "keywords", content: `${post.acf.meta_keywords}` }
           ]}
         />
         <MainContainer>
           <TwoThirdsCol>
             <article className="article__container">
-              <ArticleHeader info={post} />
-              <ArticleBody content={post.content} />
+              {/* <ArticleHeader info={post} />
+              <ArticleBody content={post.content} /> */}
             </article>
           </TwoThirdsCol>
           <OneThirdCol>
-            <ArticleFooter article={ post } />
+            {/* <ArticleFooter article={post} /> */}
             <ArticleFooterShare
-              article={post}
+              // article={post}
               handleCopyLink={this.handleCopyLink}
               copiedLink={this.copiedLink}
               path={this.props.location.href}
@@ -97,47 +99,30 @@ class ArticlePost extends PureComponent {
 export default ArticlePost;
 
 export const articleQuery = graphql`
-	query currentPostQuery($id: String!) {
-		wordpressPost(id: { eq: $id }) {
-			title
-			content
-			excerpt
-			acf {
-				meta_description
-				meta_keywords
-			}
-			date(formatString: "MMMM DD, YYYY")
-			author {
-				name
-				description
-			}
-			tags {
-				name
-				link
-				slug
-			}
-			categories {
-				name
-			}
-			featured_media {
-				alt_text
-				caption
-				localFile {
-				  childImageSharp {
-					 fixed {
-						width
-						height
-						src
-						srcSet
-					 }
-				  }
-				}
-			 }
-		}
+	query PostBySlug($uid: String!) {
+		prismicPost(uid: { eq: $uid }) {
+      uid
+      type
+      last_publication_date(formatString: "MM YYYY")
+      data {
+        post_title {
+          text
+        }
+        body_content {
+          html
+        }
+        featured_image {
+          alt
+          copyright
+          url
+        }
+        timestamp(formatString: "MMMM DD YYYY")
+      }
+    }
 		site {
 			siteMetadata {
-					title
-					subtitle
+        title
+        subtitle
 			}
 		}
 	}

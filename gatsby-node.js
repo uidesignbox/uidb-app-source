@@ -1,6 +1,5 @@
 const _ = require(`lodash`);
 const path = require(`path`);
-// const slash = require(`slash`);
 const createPaginatedPages = require(`gatsby-paginate`);
 
 exports.createPages = async ({ graphql, actions }) => {
@@ -8,10 +7,52 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const posts = await graphql(`
   {
+    prismicPost {
+      uid
+      type
+      last_publication_date(formatString: "MM YYYY")
+      data {
+        post_title {
+          text
+        }
+        body_content {
+          html
+        }
+        featured_image {
+          alt
+          copyright
+          url
+        }
+        timestamp(formatString: "MMMM DD YYYY")
+      }
+    }
+    site {
+      siteMetadata {
+        title
+        subtitle
+      }
+    }
+  }
+  `)
+
+  const allPosts = await graphql(`
+  {
     allPrismicPost {
       edges {
         node {
-          id
+          uid
+          data {
+            post_title {
+              text
+            }
+            featured_image {
+              alt
+              url
+            }
+            body_content {
+              html
+            }
+          }
         }
       }
     }
@@ -23,7 +64,7 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   }
   `)
-  
+
   const pages = await graphql(`
   {
     allPrismicPage {
@@ -56,14 +97,14 @@ exports.createPages = async ({ graphql, actions }) => {
   //   })
   // });
 
-  const postTemplate = path.resolve("./src/templates/article-template.jsx");
-  _.each(posts.data.allPrismicPost.edges, edge => {
-    console.log('EDGE: ', edge);
+  const articleTemplate = path.resolve("./src/templates/article-template.jsx");
+  _.each(allPosts.data.allPrismicPost.edges, edge => {
+    console.log('EDGE: ', JSON.stringify(edge, null, 2));
     createPage({
-      path: `/${edge.node.title}`,
-      component: postTemplate[edge.node.template],
+      path: `/${edge.node.uid}`,
+      component: articleTemplate,
       context: {
-        id: edge.node.id,
+        uid: edge.node.uid,
       },
     })
   });

@@ -9,17 +9,7 @@ import '../components/Pages/page.scss';
 
 const AboutPage = () => (
    <StaticQuery
-      query={graphql`
-         {
-            wordpressPage(title: {regex: "/About/"}) {
-               content
-               title
-               acf {
-                  meta_description
-                }
-            }
-         }
-      `}
+      
       render={data => (
          <GlobalLayout>
             <Helmet

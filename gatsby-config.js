@@ -12,12 +12,10 @@ module.exports = {
       resolve: "gatsby-source-prismic",
       options: {
         repositoryName: "uidesignbox",
-        // The token will be listed under "Permanent access tokens".
         accessToken: `${process.env.API_TOKEN}`,
 
         linkResolver: ({ node, key, value }) => doc => `/${doc.id}`,
 
-        // See: https://prismic.io/docs/javascript/query-the-api/fetch-linked-document-fields
         fetchLinks: [
           // Your list of links
         ],

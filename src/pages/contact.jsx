@@ -11,17 +11,7 @@ import '../components/Contact/contact.scss';
 
 const ContactPage = () => (
    <StaticQuery
-      query={graphql`
-         {
-            wordpressPage(title: {regex: "/Contact/"}) {
-               content
-               title
-               acf {
-                  meta_description
-                }
-            }
-         }
-      `}
+      
       render={data => (
          <GlobalLayout>
             <Helmet

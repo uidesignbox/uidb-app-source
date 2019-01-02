@@ -46,48 +46,48 @@ class CategoryTemplate extends PureComponent {
   }
 };
 
-export const categoryQuery = graphql`
-	query currentCategoryQuery($id: String!, $categories: [Int]) {
-		wordpressCategory(id: { eq: $id }) {
-			slug
-         name
-         description
-		}
-		allWordpressPost(
-			filter: {
-				categories: {
-					wordpress_id: {
-						in: $categories
-					}
-				}
-			}
-		) 
-		{
-			edges {
-				node {
-					title
-					author {
-						name
-					}
-					slug
-					excerpt
-					featured_media {
-						alt_text
-						localFile {
-						  childImageSharp {
-							fixed {
-								width
-								height
-								src
-								srcSet
-							}
-						  }
-						}
-					}
-				}
-			}
-      }
-	}
-`
+// export const categoryQuery = graphql`
+// 	query currentCategoryQuery($id: String!, $categories: [Int]) {
+// 		wordpressCategory(id: { eq: $id }) {
+// 			slug
+//          name
+//          description
+// 		}
+// 		allWordpressPost(
+// 			filter: {
+// 				categories: {
+// 					wordpress_id: {
+// 						in: $categories
+// 					}
+// 				}
+// 			}
+// 		) 
+// 		{
+// 			edges {
+// 				node {
+// 					title
+// 					author {
+// 						name
+// 					}
+// 					slug
+// 					excerpt
+// 					featured_media {
+// 						alt_text
+// 						localFile {
+// 						  childImageSharp {
+// 							fixed {
+// 								width
+// 								height
+// 								src
+// 								srcSet
+// 							}
+// 						  }
+// 						}
+// 					}
+// 				}
+// 			}
+//       }
+// 	}
+// `
 
 export default CategoryTemplate;

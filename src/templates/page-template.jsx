@@ -55,44 +55,44 @@ class PageTemplate extends PureComponent {
 
 export default PageTemplate;
 
-export const pageQuery = graphql`
-	query currentPageQuery($id: String!, $categories: [Int]) {
-		wordpressPage(id: { eq: $id }) {
-			title
-	  }
-		allWordpressPost(
-			filter: {
-				categories: {
-					wordpress_id: {
-						in: $categories
-					}
-				}
-			}
-		) 
-		{
-			edges {
-				node {
-					title
-					author {
-						name
-					}
-					slug
-					excerpt
-					featured_media {
-						alt_text
-						localFile {
-						  childImageSharp {
-							 fixed {
-								width
-								height
-								src
-								srcSet
-							 }
-						  }
-						}
-					}
-				}
-			}
-		}
-	}
-`
+// export const pageQuery = graphql`
+// 	query currentPageQuery($id: String!, $categories: [Int]) {
+// 		wordpressPage(id: { eq: $id }) {
+// 			title
+// 	  }
+// 		allWordpressPost(
+// 			filter: {
+// 				categories: {
+// 					wordpress_id: {
+// 						in: $categories
+// 					}
+// 				}
+// 			}
+// 		) 
+// 		{
+// 			edges {
+// 				node {
+// 					title
+// 					author {
+// 						name
+// 					}
+// 					slug
+// 					excerpt
+// 					featured_media {
+// 						alt_text
+// 						localFile {
+// 						  childImageSharp {
+// 							 fixed {
+// 								width
+// 								height
+// 								src
+// 								srcSet
+// 							 }
+// 						  }
+// 						}
+// 					}
+// 				}
+// 			}
+// 		}
+// 	}
+// `

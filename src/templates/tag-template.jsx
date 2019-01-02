@@ -50,46 +50,46 @@ class TagTemplate extends Component {
 
 export default TagTemplate;
 
-export const tagQuery = graphql`
-	query currentTagQuery($id: String!, $tags: [Int]) {
-		wordpressTag(id: { eq: $id }) {
-			slug
-         name
-         description
-		}
-		allWordpressPost(
-			filter: {
-				tags: {
-					wordpress_id: {
-						in: $tags
-					}
-				}
-			}
-		) 
-		{
-			edges {
-				node {
-					title
-					author {
-						name
-					}
-					slug
-					excerpt
-					featured_media {
-						alt_text
-						localFile {
-						  childImageSharp {
-							fixed {
-								width
-								height
-								src
-								srcSet
-							}
-						  }
-						}
-					}
-				}
-			}
-      }
-	}
-`
+// export const tagQuery = graphql`
+// 	query currentTagQuery($id: String!, $tags: [Int]) {
+// 		wordpressTag(id: { eq: $id }) {
+// 			slug
+//          name
+//          description
+// 		}
+// 		allWordpressPost(
+// 			filter: {
+// 				tags: {
+// 					wordpress_id: {
+// 						in: $tags
+// 					}
+// 				}
+// 			}
+// 		) 
+// 		{
+// 			edges {
+// 				node {
+// 					title
+// 					author {
+// 						name
+// 					}
+// 					slug
+// 					excerpt
+// 					featured_media {
+// 						alt_text
+// 						localFile {
+// 						  childImageSharp {
+// 							fixed {
+// 								width
+// 								height
+// 								src
+// 								srcSet
+// 							}
+// 						  }
+// 						}
+// 					}
+// 				}
+// 			}
+//       }
+// 	}
+// `
