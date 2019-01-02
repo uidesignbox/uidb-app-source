@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: 'UiDesignBox',
@@ -9,26 +13,14 @@ module.exports = {
       options: {
         repositoryName: "uidesignbox",
         // The token will be listed under "Permanent access tokens".
-        accessToken: "MC5YQld5d1JVQUFDb0FWd1Ux.I--_ve-_ve-_vTnvv71HBj3vv70TS1Hvv73vv70I77-9annvv73vv70TGDHvv71H77-977-977-9f1NZ",
+        accessToken: `${process.env.API_TOKEN}`,
 
-        linkResolver: ({ node, key, value }) => doc => {
-          // Your link resolver
-        },
+        linkResolver: ({ node, key, value }) => doc => `/${doc.id}`,
 
-        // Set a list of links to fetch and be made available in your link
-        // resolver function.
         // See: https://prismic.io/docs/javascript/query-the-api/fetch-linked-document-fields
         fetchLinks: [
           // Your list of links
         ],
-
-        // Set an HTML serializer function used to process formatted content.
-        // Fields with rich text formatting use this function to generate the
-        // correct HTML.
-        // The document node, field key (i.e. API ID), and field value are
-        // provided to the function, as seen below. This allows you to use
-        // different HTML serializer logic for each field if necessary.
-        // See: https://prismic.io/docs/nodejs/beyond-the-api/html-serializer
         htmlSerializer: ({ node, key, value }) => (
           (type, element, content, children) => {
             // Your HTML serializer
