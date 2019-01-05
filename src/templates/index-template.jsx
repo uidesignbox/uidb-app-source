@@ -17,16 +17,7 @@ import PaginateLink from '../components/Pagination/PaginateLink';
 import '../components/Index/index.scss';
 
 const IndexTemplate = ({ pathContext }) => {
-  const { group, index, pageCount, additionalContext } = pathContext;
-  const previousUrl = index - 1 === 1 ? '' : (index - 1).toString();
-  const nextUrl = (index + 1).toString();
-  const linkCheck = (pageCount - index > 0) ? true : false;
-
-  const links = [];
-
-  for (var num = 0; num < pageCount; num++) {
-    links.push(<PaginateLink key={num} url={num + 1} />);
-  }
+  const { group, additionalContext } = pathContext;
 
   return (
     <GlobalLayout>
@@ -55,7 +46,7 @@ const IndexTemplate = ({ pathContext }) => {
         </div>
 
         {/* Pagination container */}
-        <PaginateWrapper>
+        {/* <PaginateWrapper>
           <PaginateArrow
             test={linkCheck}
             url={previousUrl}
@@ -69,7 +60,7 @@ const IndexTemplate = ({ pathContext }) => {
             text='Next'
             icon='angle-right'
           />
-        </PaginateWrapper>
+        </PaginateWrapper> */}
       </div>
 
       <OneThirdCol>

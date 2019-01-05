@@ -1,6 +1,7 @@
-import React, { Component, PureComponent } from 'react';
+import React, { PureComponent } from 'react';
 import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
+
 import GlobalLayout from '../components/Layout/GlobalLayout';
 import MainContainer from '../components/Layout/MainContainer';
 import OneThirdCol from '../components/Layout/OneThirdCol';
@@ -13,24 +14,24 @@ import '../components/Pages/page.scss';
 
 class PageTemplate extends PureComponent {
   render() {
+    console.log('PAGE ARTICLE: ', this.props)
     return (
       <GlobalLayout>
-        {/* TODO: Add title and prop types */}
         <Helmet
-          title={`Title | ${this.props.pageContext.site.siteMetadata.title}`}
+          // title={`Title | ${this.props.pageContext.site.siteMetadata.title}`}
           meta={[
-            { name: "description", content: `${wordpressPage.content}` },
+            // { name: "description", content: `${wordpressPage.content}` },
             { name: "keywords", content: "" }
           ]}
         />
         <section className="page-header__container">
           <p className="subtitle">Discover all articles for</p>
-          <h1>{wordpressPage.title}</h1>
+          {/* <h1>{wordpressPage.title}</h1> */}
         </section>
         <MainContainer>
           <TwoThirdsCol>
             <section className="page__article-wrapper">
-              {allWordpressPost && allWordpressPost.edges.map((item, index) => (
+              {/* {allWordpressPost && allWordpressPost.edges.map((item, index) => (
                 <PageArticle
                   key={index}
                   image={item.featured_image}
@@ -39,7 +40,7 @@ class PageTemplate extends PureComponent {
                   author={item.author}
                   excerpt={item.excerpt}
                 />
-              ))}
+              ))} */}
             </section>
           </TwoThirdsCol>
           <OneThirdCol>
@@ -55,44 +56,58 @@ class PageTemplate extends PureComponent {
 
 export default PageTemplate;
 
-// export const pageQuery = graphql`
-// 	query currentPageQuery($id: String!, $categories: [Int]) {
-// 		wordpressPage(id: { eq: $id }) {
-// 			title
-// 	  }
-// 		allWordpressPost(
-// 			filter: {
-// 				categories: {
-// 					wordpress_id: {
-// 						in: $categories
-// 					}
-// 				}
-// 			}
-// 		) 
-// 		{
-// 			edges {
-// 				node {
-// 					title
-// 					author {
-// 						name
-// 					}
-// 					slug
-// 					excerpt
-// 					featured_media {
-// 						alt_text
-// 						localFile {
-// 						  childImageSharp {
-// 							 fixed {
-// 								width
-// 								height
-// 								src
-// 								srcSet
-// 							 }
-// 						  }
-// 						}
-// 					}
-// 				}
-// 			}
-// 		}
-// 	}
-// `
+export const pageQuery = graphql`
+	query currentPageQuery($uid: String!) {
+		prismicPage(uid: { eq: $uid }) {
+      uid
+      data {
+        page_title {
+          text
+        }
+        seo {
+          meta_description
+          meta_keywords
+        }
+      }
+    }
+    allPrismicPost(
+      filter: {
+        data: {
+          display_posts_location: {
+            elemMatch: {
+              parent_pages: {
+                uid: {
+                  eq: $uid
+                }
+              }
+            }
+          }
+        }
+      }
+    ) {
+      edges {
+        node {
+          uid
+          data {
+            post_title {
+              text
+            }
+            body_content {
+              html
+            }
+            featured_image {
+              alt
+              copyright
+              url
+            }
+            timestamp(formatString: "MMMM DD YYYY")
+            seo {
+              meta_description
+              meta_keywords
+            }
+          }
+        }
+      }
+    }
+	}
+`

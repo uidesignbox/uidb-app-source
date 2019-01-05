@@ -15,10 +15,7 @@ module.exports = {
         accessToken: `${process.env.API_TOKEN}`,
 
         linkResolver: ({ node, key, value }) => doc => `/${doc.id}`,
-
-        fetchLinks: [
-          // Your list of links
-        ],
+        
         htmlSerializer: ({ node, key, value }) => (
           (type, element, content, children) => {
             // Your HTML serializer
