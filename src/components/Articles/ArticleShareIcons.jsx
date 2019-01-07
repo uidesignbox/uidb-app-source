@@ -10,15 +10,15 @@ const ArticleShareIcons = ({ article, path, copyLink }) => {
          <a href={`https://twitter.com/intent/tweet?text=${excerpt}&via=uidesignbox&url=https://uidesignbox.com${path}`} target="_blank" rel="noopener noreferrer">
             <li><FontAwesomeIcon icon={['fab', 'twitter']} /></li>
          </a>
-         <a href={`https://www.facebook.com/sharer/sharer.php?u=https://www.uidesignbox.com${path}&picture=https://www.uidesignbox.com${article.featured_media.localFile.childImageSharp.fixed.src}/&title=${article.title}&quote=${excerpt}`} target="_blank" rel="noopener noreferrer">
+         {/* <a href={`https://www.facebook.com/sharer/sharer.php?u=https://www.uidesignbox.com${path}&picture=https://www.uidesignbox.com${article.featured_media.localFile.childImageSharp.fixed.src}/&title=${article.title}&quote=${excerpt}`} target="_blank" rel="noopener noreferrer">
             <li><FontAwesomeIcon icon={['fab', 'facebook']} /></li>
-         </a>
+         </a> */}
          <li onClick={copyLink} data-url={path}>
             <FontAwesomeIcon icon="anchor"/>
          </li>
-         <a href={`mailto:?subject=${article.title}`} target="_blank" rel="noopener noreferrer">
+         {/* <a href={`mailto:?subject=${article.title}`} target="_blank" rel="noopener noreferrer">
             <li><FontAwesomeIcon icon="envelope" /></li>
-         </a>
+         </a> */}
       </ul>
    )
 };

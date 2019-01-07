@@ -6,16 +6,16 @@ import './navigation-main.scss';
 class Navigation extends PureComponent {
   render() {
     return (
-      <StaticQuery
+      // <StaticQuery
         
-        render={data => (
+        // render={data => (
           <section className="header-mobile--wrapper">
             <nav className="header__nav">
-              <NavigationMenu items={data} />
+              {/* <NavigationMenu items={data} /> */}
             </nav>
           </section>
-        )}
-      />
+        // )}
+      // />
     );
   }
 }

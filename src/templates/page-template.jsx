@@ -14,33 +14,39 @@ import '../components/Pages/page.scss';
 
 class PageTemplate extends PureComponent {
   render() {
-    console.log('PAGE ARTICLE: ', this.props)
+    const { data } = this.props;
+    const posts = data.allPrismicPost.edges;
+    const page = data.prismicPage.data;
+    const pageSeo = page.seo;
+
     return (
       <GlobalLayout>
         <Helmet
-          // title={`Title | ${this.props.pageContext.site.siteMetadata.title}`}
+          title={`${page.page_title.text} | ${page.uid}`}
           meta={[
-            // { name: "description", content: `${wordpressPage.content}` },
+            { name: "description", content: `${pageSeo.length > 0 ? pageSeo[0].meta_description : ''}` },
             { name: "keywords", content: "" }
           ]}
         />
         <section className="page-header__container">
           <p className="subtitle">Discover all articles for</p>
-          {/* <h1>{wordpressPage.title}</h1> */}
+          <h1>{page.page_title.text}</h1>
         </section>
         <MainContainer>
           <TwoThirdsCol>
             <section className="page__article-wrapper">
-              {/* {allWordpressPost && allWordpressPost.edges.map((item, index) => (
-                <PageArticle
-                  key={index}
-                  image={item.featured_image}
-                  slug={item.slug}
-                  title={item.title}
-                  author={item.author}
-                  excerpt={item.excerpt}
-                />
-              ))} */}
+              {posts.map((item, i) => {
+                const { data } = item.node;
+                return (
+                  <PageArticle
+                    key={i}
+                    image={data.featured_image}
+                    slug={item.node.uid}
+                    title={data.post_title.text}
+                  />
+                )
+              })
+              }
             </section>
           </TwoThirdsCol>
           <OneThirdCol>

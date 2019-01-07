@@ -1,19 +1,29 @@
 import React from 'react';
-import ArticleContributor from './ArticleContributor';
-import ArticleTagContainer from './ArticleTagContainer';
 import PropTypes from 'prop-types';
 
-const ArticleFooter = ({ article }) => (
+import ArticleContributor from './ArticleContributor';
+import ArticleTagContainer from './ArticleTagContainer';
+
+const ArticleFooter = ({ date, author, tags }) => (
   <footer className="article__footer">
     <div className="left-column">
-      <ArticleContributor date={article.date} author={article.author} />
-      <ArticleTagContainer tags={article.tags} />
+      <ArticleContributor
+        date={date}
+        author={author}
+      />
+      <ArticleTagContainer tags={tags} />
     </div>
   </footer>
 );
 
 ArticleFooter.propTypes = {
-  article: PropTypes.object.isRequired,
+  date: PropTypes.string,
+  author: PropTypes.string,
+  tags: PropTypes.array
 };
+
+ArticleFooter.defaultProps = {
+  author: 'Author'
+}
     
 export default ArticleFooter;

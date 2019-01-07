@@ -56,28 +56,35 @@ class ArticlePost extends PureComponent {
   };
 
   render() {
-    console.log('PROPS ARTICLE: \n', this.props);
+    const post = this.props.data.prismicPost.data
+    const { site } = this.props.data
+    const seo = post.seo.length > 0 ? post.seo[0] : '';
 
     return (
       <GlobalLayout>
         <Helmet
-          title={`Title | UiDesignBox`}
+          title={`${post.post_title.text} | ${site.siteMetadata.title}`}
           meta={[
-            // { name: "description", content: `${post.acf.meta_description}` },
-            // { name: "keywords", content: `${post.acf.meta_keywords}` }
+            { name: "description", content: `${seo.meta_description}` },
+            { name: "keywords", content: `${seo.meta_keywords || ''}` }
           ]}
         />
         <MainContainer>
           <TwoThirdsCol>
             <article className="article__container">
-              {/* <ArticleHeader info={post} />
-              <ArticleBody content={post.content} /> */}
+              <ArticleHeader
+                title={post.post_title.text}
+                date={post.timestamp}
+                image={post.featured_image}
+              />
+              <ArticleBody content={post.body_content.html} />
             </article>
           </TwoThirdsCol>
           <OneThirdCol>
-            {/* <ArticleFooter article={post} /> */}
+            <ArticleFooter
+              date={post.timestamp}
+            />
             <ArticleFooterShare
-              // article={post}
               handleCopyLink={this.handleCopyLink}
               copiedLink={this.copiedLink}
               path={this.props.location.href}
@@ -102,8 +109,6 @@ export const articleQuery = graphql`
 	query PostBySlug($uid: String!) {
 		prismicPost(uid: { eq: $uid }) {
       uid
-      type
-      last_publication_date(formatString: "MM YYYY")
       data {
         post_title {
           text
@@ -115,6 +120,10 @@ export const articleQuery = graphql`
           alt
           copyright
           url
+        }
+        seo {
+          meta_description
+          meta_keywords
         }
         timestamp(formatString: "MMMM DD YYYY")
       }

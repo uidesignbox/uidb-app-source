@@ -6,7 +6,7 @@ const ArticleBody = ({ content }) => (
 );
 
 ArticleBody.propTypes = {
-  content: PropTypes.object
+  content: PropTypes.string.isRequired
 };
 
 export default ArticleBody;
